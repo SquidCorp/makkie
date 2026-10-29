@@ -1,0 +1,22 @@
+{
+	"name": "makkie",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"check": "astro check",
+		"lint": "biome lint .",
+		"format": "biome format . --write",
+		"ci": "biome ci . && astro check"
+	},
+	"dependencies": {
+		"astro": "^4.16.0"
+	},
+	"devDependencies": {
+		"@astrojs/check": "^0.9.12",
+		"@biomejs/biome": "1.9.4",
+		"typescript": "^5.6.0"
+	}
+}
