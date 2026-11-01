@@ -5,22 +5,22 @@ const features = [
 	{
 		icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`,
 		title: "Sens réel",
-		desc: "Découvre ce que les expressions signifient vraiment, loin des traductions littérales trompeuses."
+		desc: "Chaque fiche explique ce que l'expression veut vraiment dire, loin de la traduction littérale."
 	},
 	{
 		icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
 		title: "Contexte & registre",
-		desc: "Saisis quand et comment les natifs utilisent chaque expression : formel, familier, drôle, ironique."
+		desc: "Oral, familier, un peu brusque ou critique : chaque fiche précise où et comment l'utiliser."
 	},
 	{
 		icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>`,
 		title: "Pièges évités",
-		desc: "Ne fais plus l'erreur de traduire mot à mot. Apprends à reconnaître les faux amis et images codées."
+		desc: "Chaque fiche signale le piège pour francophones : image trompeuse, faux ami, confusion avec une autre expression."
 	},
 	{
 		icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`,
-		title: "Mémorisation active",
-		desc: "Entraîne-toi progressivement : d'abord avec indices, puis seul. La répétition espacée fait le reste."
+		title: "Révision par QCM",
+		desc: "Une situation en français, quatre options en néerlandais. Ce que tu rates revient en priorité à la session suivante."
 	}
 ];
 ---
@@ -58,14 +58,14 @@ const features = [
 				<span class="accent">sans prise de tête.</span>
 			</h1>
 			<p class="hero-subtitle">
-				Tu connais les mots, mais tu ne piges pas les expressions ?
+				Traduire une expression mot à mot ne suffit pas.
 				<br />
-				<strong>Makkie</strong> t'aide à comprendre et retenir le néerlandais
-				<strong>que les natifs parlent vraiment</strong>.
+				<strong>Makkie</strong> t'aide à comprendre le <strong>sens réel</strong> d'une expression néerlandaise, son <strong>contexte d'usage</strong>,
+				et à la retrouver au bon moment.
 			</p>
 			<div class="hero-actions">
-				<a href="#start" class="btn btn-primary">
-					<span>Essayer gratuitement</span>
+				<a href="#exemple" class="btn btn-primary">
+					<span>Commencer une session</span>
 					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</a>
 				<a href="#fonctionnement" class="btn btn-ghost">Voir comment ça marche</a>
@@ -82,8 +82,8 @@ const features = [
 				</div>
 				<div class="stat-divider"></div>
 				<div class="stat">
-					<span class="stat-number">0€</span>
-					<span class="stat-label">pour commencer</span>
+					<span class="stat-number">0</span>
+					<span class="stat-label">compte nécessaire</span>
 				</div>
 			</div>
 		</div>
@@ -133,9 +133,9 @@ const features = [
 				<div class="problem-card">
 					<div class="card-badge">❌ Traduction littérale</div>
 					<div class="fake-expression">
-						<span class="fake-dutch">"Het regent pijpestelen"</span>
-						<span class="fake-literal">→ "Il pleut des tuyaux de pipe"</span>
-						<span class="fake-real">✅ En fait : "Il pleut des cordes"</span>
+						<span class="fake-dutch">Met de deur in huis vallen</span>
+						<span class="fake-literal">→ « tomber dans la maison avec la porte »</span>
+						<span class="fake-real">✅ En fait : « aller droit au but »</span>
 					</div>
 					<div class="card-footer">
 						Chaque expression est une petite énigme culturelle.
@@ -152,8 +152,8 @@ const features = [
 				<span class="section-tag">Fonctionnement</span>
 				<h2 class="section-title">Comprendre, retenir,<br />réutiliser.</h2>
 				<p class="section-subtitle">
-					Chaque jour, Makkie te propose 5 expressions dans des situations concrètes.
-					Tu testes ta compréhension, tu t'entraînes, et tu retiens.
+					Chaque expression a sa fiche : sens, contexte, piège.
+					Une session = 5 questions, avec feedback juste ou faux après chaque réponse.
 				</p>
 			</div>
 			<div class="features-grid">
@@ -174,11 +174,11 @@ const features = [
 			<div class="example-layout">
 				<div class="example-info">
 					<span class="section-tag">Aperçu</span>
-					<h2 class="section-title">Une leçon, c'est<br />comme ça.</h2>
+					<h2 class="section-title">Une question, c'est<br />comme ça.</h2>
 					<p class="section-body">
-						Pas de listes interminables. Chaque expression est présentée dans une
-						<strong>situation réelle</strong>, avec son contexte, son registre, et un
-						entraînement progressif pour l'ancrer dans ta mémoire.
+						Une situation en français, quatre expressions néerlandaises, une seule bonne réponse.
+						Après ta réponse, tu reçois le <strong>sens</strong> et le <strong>piège</strong> de la fiche.
+						L'expression ratée redevient prioritaire à la session suivante.
 					</p>
 				</div>
 
@@ -186,43 +186,47 @@ const features = [
 					<div class="expression-card">
 						<div class="card-header">
 							<span class="card-number">1 / 5</span>
-							<span class="card-level">Débutant</span>
+							<span class="card-level">QCM</span>
 						</div>
 						<div class="card-situation">
 							<div class="situation-label">Situation</div>
 							<p class="situation-text">
-								Ton collègue te demande si tu as fini le rapport. Tu réponds :
-								<strong>"Appeltje-eitje."</strong>
+								Tu appelles un collègue et, sans dire bonjour, tu poses tout de suite la question gênante.
+								
 							</p>
 						</div>
 						<div class="card-question">
-							Que veut dire "appeltje-eitje" dans ce contexte ?
+							Quelle expression néerlandaise correspond à cette situation ?
 						</div>
 						<div class="card-options">
 							<button class="option">
 								<span class="option-letter">A</span>
-								<span>C'est une recette de cuisine</span>
+								<span>Geen blad voor de mond nemen</span>
 							</button>
 							<button class="option correct">
 								<span class="option-letter">B</span>
-								<span>C'est très facile / simple comme bonjour</span>
+								<span>Met de deur in huis vallen</span>
 								<span class="option-check">✓</span>
 							</button>
 							<button class="option">
 								<span class="option-letter">C</span>
-								<span>C'est compliqué et ennuyeux</span>
+								<span>De kat uit de boom kijken</span>
+							</button>
+							<button class="option">
+								<span class="option-letter">D</span>
+								<span>Iets onder de knie hebben</span>
 							</button>
 						</div>
 						<div class="card-explanation">
 							<div class="explanation-title">💡 Explication</div>
 							<p>
-								<strong>Appeltje-eitje</strong> (litt. "petite pomme, petit œuf")
-								signifie "<strong>simple comme bonjour</strong>" ou "c'est du gâteau".
-								C'est une expression familière et très courante aux Pays-Bas.
+								<strong>Met de deur in huis vallen</strong> (litt. « tomber dans la maison avec la porte »)
+								signifie « <strong>aller droit au but</strong>, sans préambule ».
+								Piège : ce n'est pas « débarquer chez quelqu'un ».
 							</p>
 							<div class="explanation-tags">
-								<span class="tag">Familier</span>
-								<span class="tag">Courant</span>
+								<span class="tag">Oral</span>
+								<span class="tag">Un peu brusque</span>
 							</div>
 						</div>
 					</div>
@@ -257,28 +261,17 @@ const features = [
 				</div>
 				<div class="cta-content">
 					<h2 class="cta-title">
-						5 questions par jour.<br />
-						Un néerlandais plus naturel,
-						<span class="accent">petit à petit.</span>
+						Une session, 5 questions.<br />
+						Le sens d'abord,
+						<span class="accent">l'expression ensuite.</span>
 					</h2>
 					<p class="cta-subtitle">
-						Rejoins les premiers utilisateurs. Gratuit pendant la phase bêta.
+						Pas de compte, pas d'email. Ta progression reste dans ce navigateur.
 					</p>
-					<form class="cta-form" onsubmit="(e => e.preventDefault())(event)">
-						<input
-							type="email"
-							placeholder="Ton adresse e-mail"
-							class="cta-input"
-							required
-						/>
-						<button type="submit" class="btn btn-primary btn-large">
-							<span>Recevoir un accès</span>
+					<a href="#exemple" class="btn btn-primary btn-large">
+						<span>Essayer une question</span>
 							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-						</button>
-					</form>
-					<p class="cta-disclaimer">
-						Pas de spam. Un seul e-mail quand l'appli est prête. 🇳🇱
-					</p>
+					</a>
 				</div>
 			</div>
 		</div>
