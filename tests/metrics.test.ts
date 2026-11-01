@@ -6,6 +6,7 @@ import {
 	isReturningNextDay,
 	localDay,
 	sessionAccuracy,
+	summarize,
 } from "../src/lib/metrics";
 import { createState, recordAnswer } from "../src/lib/state";
 import type { StoreState } from "../src/lib/types";
@@ -76,5 +77,36 @@ describe("sessions", () => {
 		const base = { started_at: NOW.toISOString(), ended_at: null };
 		expect(sessionAccuracy({ ...base, questions_answered: 5, correct_count: 3 })).toBeCloseTo(0.6);
 		expect(sessionAccuracy({ ...base, questions_answered: 0, correct_count: 0 })).toBeNull();
+	});
+});
+
+describe("summarize", () => {
+	it("aggregates the games page header metrics", () => {
+		let state = masteredState();
+		state = recordAnswer(state, IDS[1] ?? "", false, at(-1));
+		for (let i = 0; i < 5; i++) state = recordAnswer(state, IDS[i + 2] ?? "", true, at(0, i));
+		state = {
+			...state,
+			sessions: [
+				{
+					started_at: at(-1).toISOString(),
+					ended_at: at(-1).toISOString(),
+					questions_answered: 5,
+					correct_count: 2,
+				},
+				{
+					started_at: at(0).toISOString(),
+					ended_at: null,
+					questions_answered: 1,
+					correct_count: 0,
+				},
+			],
+		};
+		expect(summarize(state, IDS, NOW)).toEqual({
+			total: 17,
+			mastered: 1,
+			toReview: 1,
+			completeSessions: 1,
+		});
 	});
 });
