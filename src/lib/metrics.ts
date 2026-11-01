@@ -45,3 +45,20 @@ export function sessionAccuracy(session: SessionRecord): number | null {
 	if (session.questions_answered === 0) return null;
 	return session.correct_count / session.questions_answered;
 }
+
+export interface Summary {
+	total: number;
+	mastered: number;
+	toReview: number;
+	completeSessions: number;
+}
+
+/** Header metrics for the games page. Computed on the fly, nothing stored. */
+export function summarize(state: StoreState, ids: readonly string[], now: Date): Summary {
+	return {
+		total: ids.length,
+		mastered: countMastered(state, ids, now),
+		toReview: countToReview(state, ids, now),
+		completeSessions: state.sessions.filter(isCompleteSession).length,
+	};
+}

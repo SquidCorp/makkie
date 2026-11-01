@@ -1,0 +1,145 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Makkie — Jeux">
+	<header class="site-header">
+		<a href="/" class="logo"><span>🇳🇱</span> Makkie</a>
+	</header>
+
+	<main class="jeux">
+		<section class="metrics" aria-label="Métriques">
+			<div class="metric">
+				<span class="metric-value" data-metric="mastered">—</span>
+				<span class="metric-label">maîtrisées</span>
+			</div>
+			<div class="metric">
+				<span class="metric-value" data-metric="to-review">—</span>
+				<span class="metric-label">à réviser</span>
+			</div>
+			<div class="metric">
+				<span class="metric-value" data-metric="sessions">—</span>
+				<span class="metric-label">sessions terminées</span>
+			</div>
+		</section>
+
+		<h1>Jeux</h1>
+
+		<a href="/session" class="game-card">
+			<span class="game-tag">QCM</span>
+			<h2>Trouve l'expression</h2>
+			<p>
+				Une situation en français, quatre expressions en néerlandais. Une seule bonne réponse,
+				5 questions par session.
+			</p>
+			<span class="game-cta">Jouer →</span>
+		</a>
+	</main>
+</Layout>
+
+<style>
+	.site-header {
+		padding: 20px 24px;
+		border-bottom: 1px solid var(--color-border);
+		background: var(--color-surface);
+	}
+
+	.logo {
+		font-family: var(--font-heading);
+		font-weight: 700;
+		font-size: 1.25rem;
+	}
+
+	.jeux {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: 32px 24px 80px;
+	}
+
+	.metrics {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 12px;
+		margin-bottom: 40px;
+	}
+
+	.metric {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-sm);
+		padding: 16px;
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.metric-value {
+		font-family: var(--font-heading);
+		font-size: 1.6rem;
+		font-weight: 700;
+	}
+
+	.metric-label {
+		font-size: 0.8rem;
+		color: var(--color-text-muted);
+		font-weight: 500;
+	}
+
+	h1 {
+		font-family: var(--font-heading);
+		font-size: 2rem;
+		margin-bottom: 20px;
+	}
+
+	.game-card {
+		display: block;
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		box-shadow: var(--shadow-md);
+		padding: 28px;
+		transition: border-color 0.2s ease, transform 0.2s ease;
+	}
+
+	.game-card:hover {
+		border-color: var(--color-primary);
+		transform: translateY(-2px);
+	}
+
+	.game-tag {
+		display: inline-block;
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--color-primary);
+		margin-bottom: 10px;
+	}
+
+	.game-card h2 {
+		font-family: var(--font-heading);
+		font-size: 1.4rem;
+		margin-bottom: 8px;
+	}
+
+	.game-card p {
+		color: var(--color-text-secondary);
+		margin-bottom: 16px;
+	}
+
+	.game-cta {
+		font-weight: 600;
+		color: var(--color-primary);
+	}
+
+	@media (max-width: 520px) {
+		.metrics {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
+
+<script>
+	import { initJeuxPage } from "../scripts/jeux-page";
+	initJeuxPage();
+</script>
