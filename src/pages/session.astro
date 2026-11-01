@@ -1,0 +1,256 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Makkie — Session de révision">
+	<header class="session-header">
+		<a href="/" class="logo"><span>🇳🇱</span> Makkie</a>
+	</header>
+
+	<main class="session">
+		<section id="screen-home" class="panel" hidden>
+			<span class="tag-line">Session</span>
+			<h1>5 questions, sans prise de tête.</h1>
+			<p class="lead">
+				Une situation en français, quatre expressions néerlandaises. Une seule bonne réponse.
+			</p>
+			<p id="home-stats" class="stats"></p>
+			<button id="start-btn" type="button" class="btn btn-primary">Démarrer une session</button>
+			<p class="fine-print">Ta progression reste dans ce navigateur.</p>
+		</section>
+
+		<section id="screen-question" class="panel" hidden>
+			<p id="q-progress" class="progress"></p>
+			<div class="situation">
+				<span class="label">Situation</span>
+				<p id="q-situation"></p>
+			</div>
+			<p class="question">Quelle expression néerlandaise correspond à cette situation ?</p>
+			<div id="q-options" class="options"></div>
+			<div id="q-feedback" class="feedback" hidden>
+				<p id="f-title" class="fb-title"></p>
+				<p id="f-text"></p>
+				<button id="next-btn" type="button" class="btn btn-primary">Question suivante</button>
+			</div>
+		</section>
+
+		<section id="screen-end" class="panel" hidden>
+			<span class="tag-line">Fin de session</span>
+			<h1>Bien joué.</h1>
+			<p id="end-score" class="stats"></p>
+			<p class="lead">
+				Reviens demain : ce que tu as raté reviendra en priorité.
+			</p>
+			<button id="end-home-btn" type="button" class="btn btn-ghost">Retour à l'accueil de session</button>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	[hidden] {
+		display: none !important;
+	}
+
+	.session-header {
+		padding: 20px 24px;
+		border-bottom: 1px solid var(--color-border);
+		background: var(--color-surface);
+	}
+
+	.logo {
+		font-family: var(--font-heading);
+		font-weight: 700;
+		font-size: 1.25rem;
+	}
+
+	.session {
+		min-height: calc(100vh - 65px);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 40px 24px;
+	}
+
+	.panel {
+		width: 100%;
+		max-width: 620px;
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		box-shadow: var(--shadow-lg);
+		padding: 36px 32px;
+	}
+
+	.tag-line,
+	.label {
+		display: inline-block;
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--color-primary);
+		margin-bottom: 12px;
+	}
+
+	h1 {
+		font-family: var(--font-heading);
+		font-size: 1.9rem;
+		line-height: 1.15;
+		margin-bottom: 14px;
+	}
+
+	.lead {
+		color: var(--color-text-secondary);
+		margin-bottom: 20px;
+	}
+
+	.stats {
+		font-weight: 600;
+		margin-bottom: 24px;
+	}
+
+	.fine-print {
+		margin-top: 16px;
+		font-size: 0.85rem;
+		color: var(--color-text-muted);
+	}
+
+	.btn {
+		display: inline-flex;
+		padding: 14px 26px;
+		border-radius: 100px;
+		font-weight: 600;
+		font-size: 0.95rem;
+		cursor: pointer;
+	}
+
+	.btn-primary {
+		background: var(--color-primary);
+		color: #fff;
+		box-shadow: var(--shadow-primary);
+	}
+
+	.btn-ghost {
+		border: 1.5px solid var(--color-border);
+		color: var(--color-text);
+		background: transparent;
+	}
+
+	.progress {
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: var(--color-text-muted);
+		margin-bottom: 16px;
+	}
+
+	.situation {
+		background: var(--color-bg);
+		border-left: 3px solid var(--color-primary);
+		border-radius: var(--radius-sm);
+		padding: 16px;
+		margin-bottom: 20px;
+	}
+
+	.situation p {
+		font-size: 1.05rem;
+		line-height: 1.6;
+	}
+
+	.label {
+		margin-bottom: 6px;
+	}
+
+	.question {
+		font-family: var(--font-heading);
+		font-weight: 600;
+		font-size: 1.1rem;
+		margin-bottom: 16px;
+	}
+
+	.options {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		margin-bottom: 20px;
+	}
+
+	.feedback {
+		padding: 18px;
+		border-radius: var(--radius-sm);
+		background: var(--color-bg-warm);
+	}
+
+	.fb-title {
+		font-weight: 700;
+		margin-bottom: 6px;
+	}
+
+	.fb-title.ok {
+		color: #16a34a;
+	}
+
+	.fb-title.ko {
+		color: #dc2626;
+	}
+
+	.feedback p:not(.fb-title) {
+		margin-bottom: 16px;
+		color: var(--color-text-secondary);
+	}
+</style>
+
+<style is:global>
+	/* Option buttons are created in the client script, so they need global styles. */
+	.option {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 14px 16px;
+		background: var(--color-bg);
+		border: 1.5px solid var(--color-border);
+		border-radius: var(--radius-sm);
+		font-size: 0.95rem;
+		color: var(--color-text);
+		text-align: left;
+		cursor: pointer;
+		transition: border-color 0.2s ease;
+	}
+
+	.option:not(:disabled):hover {
+		border-color: var(--color-primary);
+	}
+
+	.option:disabled {
+		cursor: default;
+		color: var(--color-text);
+	}
+
+	.option.correct {
+		border-color: #22c55e;
+		background: #f0fdf4;
+	}
+
+	.option.wrong {
+		border-color: #dc2626;
+		background: #fef2f2;
+	}
+
+	.option-letter {
+		width: 28px;
+		height: 28px;
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: 1.5px solid var(--color-border);
+		border-radius: 50%;
+		font-weight: 700;
+		font-size: 0.8rem;
+		font-family: var(--font-heading);
+	}
+</style>
+
+<script>
+	import { initSessionPage } from "../scripts/session-page";
+	initSessionPage();
+</script>
